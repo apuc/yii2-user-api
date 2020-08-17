@@ -1,0 +1,22 @@
+# ���� ��� ����� ��� ����, ��������� ���
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+# � ��������� ������ �������������� �� index.php
+#RewriteRule . index.php
+
+Options +SymLinksIfOwnerMatch
+IndexIgnore /
+
+RewriteEngine on
+#RewriteBase /
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.rub-on.ru$ [NC]
+RewriteRule ^(.*)$ http://rub-on.ru/$1 [R=301,L]
